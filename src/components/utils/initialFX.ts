@@ -1,134 +1,185 @@
-import { SplitText } from "gsap-trial/SplitText";
 import gsap from "gsap";
-import { smoother } from "../Navbar";
+import { TextSplitter } from "./splitText";
 
 export function initialFX() {
   document.body.style.overflowY = "auto";
-  smoother.paused(false);
-  document.getElementsByTagName("main")[0].classList.add("main-active");
+  const mainEl = document.getElementsByTagName("main")[0];
+  if (mainEl) {
+    mainEl.classList.add("main-active");
+  }
+
   gsap.to("body", {
     backgroundColor: "#0b080c",
     duration: 0.5,
-    delay: 1,
+    delay: 0.4,
   });
 
-  var landingText = new SplitText(
-    [".landing-info h3", ".landing-intro h2", ".landing-intro h1"],
-    {
-      type: "chars,lines",
-      linesClass: "split-line",
-    }
+  const landingIntroH2 = document.querySelector(".landing-intro h2") as HTMLElement;
+  const landingNameLines = document.querySelectorAll<HTMLElement>(
+    ".landing-name-line"
   );
-  gsap.fromTo(
-    landingText.chars,
-    { opacity: 0, y: 80, filter: "blur(5px)" },
-    {
-      opacity: 1,
-      duration: 1.2,
-      filter: "blur(0px)",
-      ease: "power3.inOut",
-      y: 0,
-      stagger: 0.025,
-      delay: 0.3,
-    }
-  );
+  const landingInfoH3 = document.querySelector(".landing-info h3") as HTMLElement;
 
-  let TextProps = { type: "chars,lines", linesClass: "split-h2" };
+  if (landingIntroH2) {
+    const s1 = new TextSplitter(landingIntroH2, { type: "chars" });
+    gsap.fromTo(
+      s1.chars,
+      { opacity: 0, y: 40, filter: "blur(4px)" },
+      {
+        opacity: 1,
+        duration: 0.9,
+        filter: "blur(0px)",
+        ease: "power3.out",
+        y: 0,
+        stagger: 0.02,
+        delay: 0.1,
+      }
+    );
+  }
 
-  var landingText2 = new SplitText(".landing-h2-info", TextProps);
-  gsap.fromTo(
-    landingText2.chars,
-    { opacity: 0, y: 80, filter: "blur(5px)" },
-    {
-      opacity: 1,
-      duration: 1.2,
-      filter: "blur(0px)",
-      ease: "power3.inOut",
-      y: 0,
-      stagger: 0.025,
-      delay: 0.3,
-    }
-  );
+  landingNameLines.forEach((line, index) => {
+    const splitter = new TextSplitter(line, { type: "chars" });
+    if (!splitter.chars.length) return;
+    gsap.fromTo(
+      splitter.chars,
+      { opacity: 0, y: 50, filter: "blur(4px)" },
+      {
+        opacity: 1,
+        duration: 1.0,
+        filter: "blur(0px)",
+        ease: "power3.out",
+        y: 0,
+        stagger: 0.025,
+        delay: 0.2 + index * 0.08,
+      }
+    );
+  });
+
+  if (landingInfoH3) {
+    const s3 = new TextSplitter(landingInfoH3, { type: "chars" });
+    gsap.fromTo(
+      s3.chars,
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        duration: 0.8,
+        ease: "power3.out",
+        y: 0,
+        stagger: 0.02,
+        delay: 0.3,
+      }
+    );
+  }
 
   gsap.fromTo(
     ".landing-info-h2",
     { opacity: 0, y: 30 },
     {
       opacity: 1,
-      duration: 1.2,
-      ease: "power1.inOut",
+      duration: 1,
+      ease: "power2.out",
       y: 0,
-      delay: 0.8,
+      delay: 0.5,
     }
   );
+
   gsap.fromTo(
-    [".header", ".icons-section", ".nav-fade"],
-    { opacity: 0 },
+    [".header", ".icons-section"],
+    { opacity: 0, y: -10, xPercent: -50 },
     {
       opacity: 1,
-      duration: 1.2,
-      ease: "power1.inOut",
-      delay: 0.1,
+      y: 0,
+      xPercent: -50,
+      duration: 0.8,
+      ease: "power2.out",
+      delay: 0.3,
+      stagger: 0.1,
     }
   );
 
-  var landingText3 = new SplitText(".landing-h2-info-1", TextProps);
-  var landingText4 = new SplitText(".landing-h2-1", TextProps);
-  var landingText5 = new SplitText(".landing-h2-2", TextProps);
+  gsap.fromTo(
+    [".nav-fade", ".landing-actions"],
+    { opacity: 0, y: -10 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "power2.out",
+      delay: 0.5,
+      stagger: 0.1,
+    }
+  );
 
-  LoopText(landingText2, landingText3);
-  LoopText(landingText4, landingText5);
+  const textProps = { type: "chars", linesClass: "split-h2" };
+  const h2Info = document.querySelector(".landing-h2-info") as HTMLElement;
+  const h2Info1 = document.querySelector(".landing-h2-info-1") as HTMLElement;
+  const h2_1 = document.querySelector(".landing-h2-1") as HTMLElement;
+  const h2_2 = document.querySelector(".landing-h2-2") as HTMLElement;
+
+  if (h2Info && h2Info1) {
+    const sA = new TextSplitter(h2Info, textProps);
+    const sB = new TextSplitter(h2Info1, textProps);
+    loopText(sA, sB);
+  }
+
+  if (h2_1 && h2_2) {
+    const sC = new TextSplitter(h2_1, textProps);
+    const sD = new TextSplitter(h2_2, textProps);
+    loopText(sC, sD);
+  }
 }
 
-function LoopText(Text1: SplitText, Text2: SplitText) {
-  var tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
-  const delay = 4;
-  const delay2 = delay * 2 + 1;
+function loopText(text1: TextSplitter, text2: TextSplitter) {
+  if (!text1.chars.length || !text2.chars.length) return;
+
+  const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
+  const delay = 3.5;
+  const delay2 = delay * 2 + 0.8;
 
   tl.fromTo(
-    Text2.chars,
-    { opacity: 0, y: 80 },
+    text2.chars,
+    { opacity: 0, y: 40 },
     {
       opacity: 1,
-      duration: 1.2,
+      duration: 0.9,
       ease: "power3.inOut",
       y: 0,
-      stagger: 0.1,
+      stagger: 0.05,
       delay: delay,
     },
     0
   )
     .fromTo(
-      Text1.chars,
-      { y: 80 },
+      text1.chars,
+      { y: 40 },
       {
-        duration: 1.2,
+        duration: 0.9,
         ease: "power3.inOut",
         y: 0,
-        stagger: 0.1,
+        stagger: 0.05,
         delay: delay2,
       },
       1
     )
     .fromTo(
-      Text1.chars,
+      text1.chars,
       { y: 0 },
       {
-        y: -80,
-        duration: 1.2,
+        y: -40,
+        duration: 0.9,
         ease: "power3.inOut",
-        stagger: 0.1,
+        stagger: 0.05,
         delay: delay,
       },
       0
     )
     .to(
-      Text2.chars,
+      text2.chars,
       {
-        y: -80,
-        duration: 1.2,
+        y: -40,
+        duration: 0.9,
         ease: "power3.inOut",
-        stagger: 0.1,
+        stagger: 0.05,
         delay: delay2,
       },
       1

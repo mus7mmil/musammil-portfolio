@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <rect width="256" height="256" rx="40" fill="#330000"/>
+  <rect width="254" height="254" x="1" y="1" rx="39" fill="none" stroke="#ff9a00" stroke-width="2" stroke-opacity="0.5"/>
+  <text x="128" y="150" text-anchor="middle" fill="#ff9a00" font-family="'Geist', sans-serif" font-size="95" font-weight="900" letter-spacing="-2">Ai</text>
+  <text x="128" y="225" text-anchor="middle" fill="#ffffff" font-family="'Geist', sans-serif" font-size="18" font-weight="700" letter-spacing="1.5">ILLUSTRATOR</text>
+</svg>
+

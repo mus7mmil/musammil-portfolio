@@ -1,13 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
+/* Geist font is loaded via <link> in index.html with font-display:swap for non-blocking render */
 
 :root {
   font-family: "Geist", sans-serif;
-
   font-optical-sizing: auto;
   font-style: normal;
   line-height: 1.5;
   scroll-behavior: smooth;
-  color-scheme: light dark;
+  color-scheme: dark;
   color: #eae5ec;
   background-color: var(--backgroundColor);
 
@@ -19,10 +18,13 @@
   -webkit-user-select: none;
   -moz-user-select: none;
   --accentColor: #c2a4ff;
+  --accentGlow: rgba(194, 164, 255, 0.4);
   --backgroundColor: #0b080c;
+  --surfaceColor: #130f1a;
   --vh: 100vh;
   --vh: 100svh;
 }
+
 h1,
 h2,
 h3,
@@ -31,40 +33,46 @@ h5,
 h6 {
   font-family: "Geist", sans-serif;
 }
-body {
-  overflow: hidden;
-}
-a {
-  color: inherit;
-  text-decoration: inherit;
-}
-a:hover {
-  color: var(--accentColor);
-}
-main {
-  opacity: 1;
-  transition: 0.3s;
-}
-.main-active {
-  opacity: 0;
-  animation: fadeIn 1s 1;
-  animation-fill-mode: forwards;
-}
-@keyframes fadeIn {
-  100% {
-    opacity: 1;
-  }
-}
+
 body {
   margin: 0;
   height: auto;
-  background-color: #000;
+  background-color: var(--backgroundColor);
   flex-grow: 1;
   --cWidth: calc(100% - 30px);
   --cMaxWidth: 1920px;
   max-width: 100vw;
   overflow-x: hidden;
+  color: #eae5ec;
 }
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+  transition: color 0.25s ease;
+}
+
+a:hover {
+  color: var(--accentColor);
+}
+
+main {
+  opacity: 1;
+  transition: 0.3s;
+}
+
+.main-active {
+  opacity: 0;
+  animation: fadeIn 1s 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
+}
+
 .main-body {
   max-width: 100vw;
   overflow-x: hidden;
@@ -75,49 +83,61 @@ body {
   margin: auto;
   position: relative;
 }
-.container1 {
-  width: var(--cWidth);
-  height: var(--vh);
-  margin: auto;
-  position: relative;
+
+.section-container {
+  max-width: var(--cMaxWidth);
+  margin: 0 auto;
 }
+
 .split-line {
   overflow: hidden;
 }
+.para.about-lead .split-line {
+  pointer-events: none;
+}
 .split-h2 {
   overflow: hidden;
-  display: flex;
+  display: inline-block;
+  vertical-align: top;
   white-space: nowrap;
-  flex-wrap: nowrap;
+  max-width: 100%;
 }
 
 .techstack {
   width: 100%;
   position: relative;
-  height: var(--vh);
+  height: 90vh;
   margin: auto;
-  margin-top: 50px;
-  margin-bottom: -100px;
+  margin-top: 40px;
+  margin-bottom: 20px;
 }
 
 .techstack h2 {
-  font-size: 80px;
+  font-size: 54px;
   text-align: center;
   position: absolute;
   width: 100%;
-  top: 120px;
+  top: 60px;
   left: 0;
-  font-weight: 400;
+  font-weight: 600;
+  letter-spacing: 2px;
   text-transform: uppercase;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(194, 164, 255, 0.2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  pointer-events: none;
+  z-index: 2;
 }
 
 @media screen and (min-width: 768px) {
   body {
-    --cWidth: 94%;
+    --cWidth: 92%;
   }
 }
+
 @media screen and (max-width: 900px) {
   .techstack h2 {
-    font-size: 40px;
+    font-size: 34px;
+    top: 30px;
   }
 }

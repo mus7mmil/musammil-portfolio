@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f121d"/>
+      <stop offset="50%" stop-color="#151b2b"/>
+      <stop offset="100%" stop-color="#090d16"/>
+    </linearGradient>
+    <linearGradient id="accent3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <filter id="glow3" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="15" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#bg3)" rx="16"/>
+  <rect width="798" height="498" x="1" y="1" fill="none" stroke="#38bdf8" stroke-opacity="0.3" stroke-width="1.5" rx="15"/>
+
+  <!-- Glowing accents -->
+  <circle cx="700" cy="140" r="100" fill="#38bdf8" opacity="0.12" filter="url(#glow3)"/>
+  <circle cx="150" cy="400" r="110" fill="#818cf8" opacity="0.08" filter="url(#glow3)"/>
+
+  <!-- Desktop Browser Mockup -->
+  <g transform="translate(420, 90)">
+    <!-- Browser Window -->
+    <rect width="330" height="260" rx="12" fill="#090d16" stroke="#38bdf8" stroke-opacity="0.4" stroke-width="1.5"/>
+    <!-- Browser Top Bar -->
+    <rect width="330" height="28" rx="12" fill="#131b2e"/>
+    <circle cx="16" cy="14" r="4" fill="#f87171"/>
+    <circle cx="28" cy="14" r="4" fill="#fbbf24"/>
+    <circle cx="40" cy="14" r="4" fill="#34d399"/>
+    <rect width="140" height="14" x="60" y="7" rx="7" fill="#0b101c"/>
+
+    <!-- Website Hero inside Browser -->
+    <rect width="300" height="90" x="15" y="42" rx="8" fill="#15213b"/>
+    <rect width="120" height="10" x="30" y="60" rx="4" fill="#ffffff" opacity="0.9"/>
+    <rect width="90" height="7" x="30" y="78" rx="3" fill="#38bdf8" opacity="0.7"/>
+    <rect width="50" height="18" x="30" y="98" rx="9" fill="#38bdf8"/>
+
+    <!-- Pet card mockup inside browser -->
+    <rect width="90" height="90" x="210" y="50" rx="8" fill="#1d2e52"/>
+    <circle cx="255" cy="85" r="18" fill="#818cf8" opacity="0.6"/>
+
+    <!-- Service Cards Grid -->
+    <rect width="90" height="70" x="15" y="145" rx="8" fill="#10182b" stroke="#1f3156" stroke-width="1"/>
+    <rect width="90" height="70" x="120" y="145" rx="8" fill="#10182b" stroke="#1f3156" stroke-width="1"/>
+    <rect width="90" height="70" x="225" y="145" rx="8" fill="#10182b" stroke="#1f3156" stroke-width="1"/>
+  </g>
+
+  <!-- Left Content -->
+  <g transform="translate(60, 110)">
+    <!-- Tag -->
+    <rect width="200" height="28" rx="14" fill="#38bdf8" fill-opacity="0.15" stroke="#38bdf8" stroke-opacity="0.3"/>
+    <text x="14" y="18" fill="#7dd3fc" font-family="'Geist', -apple-system, sans-serif" font-size="11" font-weight="700" letter-spacing="1.5">WEB DESIGN &amp; DEVELOPMENT</text>
+
+    <!-- Title -->
+    <text x="0" y="80" fill="#ffffff" font-family="'Geist', -apple-system, sans-serif" font-size="34" font-weight="800" letter-spacing="1">PETPAMPER PRO</text>
+    <text x="0" y="115" fill="url(#accent3)" font-family="'Geist', -apple-system, sans-serif" font-size="19" font-weight="600">Pet Care &amp; Grooming Website</text>
+
+    <!-- Subtitle -->
+    <text x="0" y="155" fill="#b4acbe" font-family="'Geist', -apple-system, sans-serif" font-size="14" font-weight="400">Streamlined Service Presentation &amp; Clear Navigation</text>
+    <text x="0" y="180" fill="#7dd3fc" font-family="'Geist', -apple-system, sans-serif" font-size="13">Python • Django • Figma</text>
+
+    <!-- Placeholder Badge note -->
+    <g transform="translate(0, 220)">
+      <rect width="290" height="42" rx="8" fill="#11192d" stroke="#38bdf8" stroke-opacity="0.4" stroke-dasharray="4,4"/>
+      <text x="16" y="26" fill="#7dd3fc" font-family="'Geist', -apple-system, sans-serif" font-size="12" font-weight="500">📷 Ready for Production Screenshots</text>
+    </g>
+  </g>
+</svg>
+

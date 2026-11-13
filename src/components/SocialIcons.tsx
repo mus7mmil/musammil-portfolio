@@ -1,27 +1,29 @@
-import {
-  FaGithub,
-  FaInstagram,
-  FaLinkedinIn,
-  FaXTwitter,
-} from "react-icons/fa6";
-import "./styles/SocialIcons.css";
+import { FaBehance, FaLinkedinIn, FaEnvelope } from "react-icons/fa6";
 import { TbNotes } from "react-icons/tb";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import HoverLinks from "./HoverLinks";
+import "./styles/SocialIcons.css";
 
 const SocialIcons = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    const social = document.getElementById("social") as HTMLElement;
+    const social = containerRef.current;
+    if (!social) return;
+
+    const cleanups: (() => void)[] = [];
 
     social.querySelectorAll("span").forEach((item) => {
       const elem = item as HTMLElement;
       const link = elem.querySelector("a") as HTMLElement;
+      if (!link) return;
 
       const rect = elem.getBoundingClientRect();
       let mouseX = rect.width / 2;
       let mouseY = rect.height / 2;
       let currentX = 0;
       let currentY = 0;
+      let animId: number;
 
       const updatePosition = () => {
         currentX += (mouseX - currentX) * 0.1;
@@ -30,58 +32,86 @@ const SocialIcons = () => {
         link.style.setProperty("--siLeft", `${currentX}px`);
         link.style.setProperty("--siTop", `${currentY}px`);
 
-        requestAnimationFrame(updatePosition);
+        animId = requestAnimationFrame(updatePosition);
       };
 
       const onMouseMove = (e: MouseEvent) => {
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+        const currentRect = elem.getBoundingClientRect();
+        const x = e.clientX - currentRect.left;
+        const y = e.clientY - currentRect.top;
 
-        if (x < 40 && x > 10 && y < 40 && y > 5) {
+        if (x < 50 && x > 0 && y < 50 && y > 0) {
           mouseX = x;
           mouseY = y;
         } else {
-          mouseX = rect.width / 2;
-          mouseY = rect.height / 2;
+          mouseX = currentRect.width / 2;
+          mouseY = currentRect.height / 2;
         }
       };
 
-      document.addEventListener("mousemove", onMouseMove);
+      document.addEventListener("mousemove", onMouseMove, { passive: true });
+      animId = requestAnimationFrame(updatePosition);
 
-      updatePosition();
-
-      return () => {
-        elem.removeEventListener("mousemove", onMouseMove);
-      };
+      cleanups.push(() => {
+        document.removeEventListener("mousemove", onMouseMove);
+        cancelAnimationFrame(animId);
+      });
     });
+
+    return () => {
+      cleanups.forEach((cleanup) => cleanup());
+    };
   }, []);
+
+  
 
   return (
     <div className="icons-section">
-      <div className="social-icons" data-cursor="icons" id="social">
+      <div
+        className="social-icons"
+        data-cursor="icons"
+        id="social"
+        ref={containerRef}
+      >
         <span>
-          <a href="https://github.com" target="_blank">
-            <FaGithub />
-          </a>
-        </span>
-        <span>
-          <a href="https://www.linkedin.com" target="_blank">
+          <a
+            href="https://linkedin.com/in/muhammed-musammil-mm"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn Profile"
+          >
             <FaLinkedinIn />
           </a>
         </span>
         <span>
-          <a href="https://x.com" target="_blank">
-            <FaXTwitter />
+          <a
+            href="https://www.behance.net/musammilmm"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Behance Portfolio"
+          >
+            <FaBehance />
           </a>
         </span>
         <span>
-          <a href="https://www.instagram.com" target="_blank">
-            <FaInstagram />
+          <a
+            href="mailto:muzammilm706@gmail.com"
+            aria-label="Send Email"
+          >
+            <FaEnvelope />
           </a>
         </span>
       </div>
-      <a className="resume-button" href="#">
-        <HoverLinks text="RESUME" />
+
+      <a
+        className="resume-button"
+       href="/documents/Muhammed_Musammil_MM_UIUX_Designer_Resume.pdf"
+      target="_blank"
+rel="noopener noreferrer"
+        data-cursor="disable"
+        aria-label="Contact for Resume"
+      >
+        <HoverLinks text="CONTACT / CV" />
         <span>
           <TbNotes />
         </span>

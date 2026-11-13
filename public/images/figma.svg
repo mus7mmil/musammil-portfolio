@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <rect width="256" height="256" rx="40" fill="#0d0914"/>
+  <rect width="254" height="254" x="1" y="1" rx="39" fill="none" stroke="#a259ff" stroke-width="2" stroke-opacity="0.4"/>
+  <!-- Figma 5-part logo shape -->
+  <g transform="translate(83, 48)">
+    <rect x="0" y="0" width="45" height="45" rx="22.5" fill="#F24E1E"/>
+    <rect x="45" y="0" width="45" height="45" rx="22.5" fill="#FF7262"/>
+    <rect x="0" y="45" width="45" height="45" rx="22.5" fill="#A259FF"/>
+    <circle cx="67.5" cy="67.5" r="22.5" fill="#1ABCFE"/>
+    <path d="M 0 90 A 22.5 22.5 0 0 0 45 90 L 45 135 A 22.5 22.5 0 0 1 0 135 Z" fill="#0ACF83"/>
+  </g>
+  <text x="128" y="225" text-anchor="middle" fill="#ffffff" font-family="'Geist', sans-serif" font-size="22" font-weight="700" letter-spacing="1.5">FIGMA</text>
+</svg>
+

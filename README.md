@@ -1,65 +1,54 @@
-# My Portfolio Website - Overview 🚀
+# Muhammed Musammil M M — UI/UX Designer Portfolio
 
-This repository contains the open-source version of my personal portfolio website.  
-Feel free to explore the code and use it for learning and inspiration.
-
----
-
-## ⚠️ Usage Notice
-
-This project is shared for learning purposes only.
-
-Please do NOT:
-- Clone or replicate the full website or design
-- Repost it with minor content changes
-- Use this project for commercial/client work
-- Create tutorials or content using this exact project
-
-If you use parts of the code, you must provide proper credit linking back to the original repository.
-
-Build your own version — don’t just copy.
-
-— Moncy Yohannan
+A creative 3D animated portfolio showcasing the work, design philosophy, skills, and background of **Muhammed Musammil M M**, UI/UX Designer based in Thrissur, Kerala, India.
 
 ---
 
-## 🛠️ Instructions
-
-I have modified the GSAP Club plugins using trial versions.  
-⚠️ Note: Trial plugins cannot be used for production or hosting.
-
-For official GSAP Club plugins, refer here:  
-https://gsap.com/docs/v3/Installation/
-
----
-
-## ⚙️ Tech Stack
-
-React • TypeScript • GSAP • Three.js • WebGL • HTML • CSS • JavaScript
+## 👨‍💻 About Muhammed Musammil
+* **Title**: UI/UX Designer
+* **Education**: Bachelor of Computer Applications (BCA), IGNOU (2022–2025)
+* **Certifications**: ADVM – Advertising Design & Visual Media, Dotin Creative Academy (2026)
+* **Location**: Thrissur, Kerala, India
+* **Email**: [muzammilm706@gmail.com](mailto:muzammilm706@gmail.com)
+* **LinkedIn**: [linkedin.com/in/muhammed-musammil-mm](https://linkedin.com/in/muhammed-musammil-mm)
+* **Behance**: [behance.net/musammilmm](https://www.behance.net/musammilmm)
 
 ---
 
-## 🎨 Assets Usage
-
-Some 3D assets included in this repository are free to use for learning purposes.
-
-However:
-
-- The original 3D avatar used on my live portfolio is NOT included in this repository
-- That avatar is a custom asset created over ~1 month
-- It is not open source and not available for reuse
-
-Any usage, extraction, or redistribution of that avatar from my live website is strictly prohibited.
-
----
-
-![Protfolio-Preview](https://github.com/user-attachments/assets/3c4557e7-6392-4928-b8a9-7b2476ef4edd)
+## 🚀 Featured Projects
+1. **Loopin – Bus & Metro Commuter App**
+   * *Category*: UI/UX Design | Mobile Application | Case Study
+   * *Tools*: Figma, User Research, Wireframing, Prototyping
+   * *Case Study*: [View on Behance](https://www.behance.net/gallery/257132861/Loopin-Bus-Metro-Commuter-App-UIUX-Website)
+2. **Pawzo – Pet Care Mobile App**
+   * *Category*: UI/UX Design | Mobile Application | Case Study
+   * *Tools*: Figma, Design Systems, Mobile UI, Usability Testing
+   * *Case Study*: [View on Behance](https://www.behance.net/gallery/257410269/Pawzo-Pet-Care-Mobile-App-UIUX-Case-Study)
+3. **PetPamper Pro – Pet Care & Grooming Website**
+   * *Category*: UI/UX Design | Web Development
+   * *Tools*: Python, Django, Figma, Responsive Web
 
 ---
 
-## 📄 License
+## 🛠️ Tech Stack & Architecture
+* **Frontend**: React 18, TypeScript, Vite
+* **3D Graphics**: Three.js, React Three Fiber, Rapier Physics, Drei
+* **Motion & Animation**: GSAP (ScrollTrigger, Custom DOM text splitter)
+* **Styling**: Modern CSS with CSS custom properties, responsive design tokens
 
-This project is licensed under the Personal Portfolio License (PPL) v1.0.
+---
 
-See the LICENSE file for full details
+## 💻 Local Development
+```bash
+# Install dependencies
+npm install
 
+# Start local development server
+npm run dev
+
+# Run TypeScript compilation and build
+npm run build
+
+# Preview production build locally
+npm run preview
+```

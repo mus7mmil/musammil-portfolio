@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <rect width="256" height="256" rx="40" fill="#0c1220"/>
+  <rect width="254" height="254" x="1" y="1" rx="39" fill="none" stroke="#007acc" stroke-width="2" stroke-opacity="0.5"/>
+  <g transform="translate(68, 50)">
+    <path d="M 90 0 L 120 18 L 120 102 L 90 120 L 0 75 L 0 45 Z" fill="none"/>
+    <path d="M 85 8 L 30 52 L 50 68 L 115 18 Z" fill="#0065a9"/>
+    <path d="M 85 112 L 30 68 L 50 52 L 115 102 Z" fill="#007acc"/>
+    <path d="M 115 18 L 115 102 L 85 112 L 85 8 Z" fill="#1f9cf0"/>
+    <path d="M 0 45 L 30 60 L 0 75 Z" fill="#0065a9"/>
+  </g>
+  <text x="128" y="225" text-anchor="middle" fill="#ffffff" font-family="'Geist', sans-serif" font-size="18" font-weight="700" letter-spacing="1.5">VS CODE</text>
+</svg>
+

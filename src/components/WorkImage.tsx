@@ -10,35 +10,41 @@ interface Props {
 
 const WorkImage = (props: Props) => {
   const [isVideo, setIsVideo] = useState(false);
-  const [video, setVideo] = useState("");
-  const handleMouseEnter = async () => {
-    if (props.video) {
-      setIsVideo(true);
-      const response = await fetch(`src/assets/${props.video}`);
-      const blob = await response.blob();
-      const blobUrl = URL.createObjectURL(blob);
-      setVideo(blobUrl);
-    }
-  };
 
   return (
     <div className="work-image">
-      <a
-        className="work-image-in"
-        href={props.link}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={() => setIsVideo(false)}
-        target="_blank"
-        data-cursor={"disable"}
-      >
-        {props.link && (
+      {props.link ? (
+        <a
+          className="work-image-in"
+          href={props.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          onMouseEnter={() => props.video && setIsVideo(true)}
+          onMouseLeave={() => setIsVideo(false)}
+          data-cursor="disable"
+          aria-label={props.alt || "View Project"}
+        >
           <div className="work-link">
             <MdArrowOutward />
           </div>
-        )}
-        <img src={props.image} alt={props.alt} />
-        {isVideo && <video src={video} autoPlay muted playsInline loop></video>}
-      </a>
+          <img
+            src={props.image}
+            alt={props.alt || "Project preview"}
+            loading="lazy"
+          />
+          {isVideo && props.video && (
+            <video src={props.video} autoPlay muted playsInline loop></video>
+          )}
+        </a>
+      ) : (
+        <div className="work-image-in work-image-static">
+          <img
+            src={props.image}
+            alt={props.alt || "Project preview"}
+            loading="lazy"
+          />
+        </div>
+      )}
     </div>
   );
 };
